@@ -15,7 +15,7 @@ pip install pygame
 ```
 ## Ejecución
 
-Para la ejecución del juego se debe ingresar a la carpeta de la version que se quiera correr y ejecutar el siguiente comando:
+Para iniciar el juego, accede a la carpeta de la versión deseada y utiliza el siguiente comando:
 
 ```bash
 py main.py
@@ -25,4 +25,4 @@ o
 ```bash
 python3 main.py
 ```
-Ademas, cada carpeta incluye un archivo ejecutable **Tetris.exe** para ser corrido en sistemas operativos windows
+Además, cada carpeta incluye un archivo ejecutable llamado **Tetris.exe**, diseñado para ser ejecutado en sistemas operativos Windows.
