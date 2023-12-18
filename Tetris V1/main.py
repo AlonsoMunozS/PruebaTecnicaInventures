@@ -51,7 +51,7 @@ def show_start_screen():
     vertical_spacing = 50
 
 
-# Uso de la función draw_text_centered para centrar los textos vertical y horizontalmente
+    # Uso de la función draw_text_centered para centrar los textos vertical y horizontalmente
     draw_text_centered("TETRIS", -vertical_spacing, WHITE)
     draw_text_centered("Presiona cualquier tecla para comenzar", vertical_spacing, WHITE)
     pygame.display.flip()
@@ -100,7 +100,7 @@ def show_game_over_screen():
                     score = 0
                     shapes_bag = [random.choice(SHAPES) for _ in range(7)]
                     next_shapes = [shapes_bag.pop(0) for _ in range(3)]
-                    speed = 30*(0.8 - ((level - 1) * 0.007))**(level - 1)
+                    speed = 30*((0.8 - ((level - 1) * 0.007))**(level - 1))
                     combo_count = -1
                     held_shape = None
                     pygame.mixer.music.load("tetris.mp3")  # Reemplaza "nombre_del_archivo_de_audio.mp3" con tu archivo de audio
@@ -144,7 +144,7 @@ level = 1
 score = 0
 shapes_bag = random.sample(SHAPES, len(SHAPES))
 next_shapes = [shapes_bag.pop(0) for _ in range(3)]
-speed = 30*(0.8 - ((level - 1) * 0.007))**(level - 1)
+speed = 30*((0.8 - ((level - 1) * 0.007))**(level - 1))
 held_shape = None
 combo_count = -1
 # Estado del juego
@@ -177,7 +177,7 @@ def update_board(shape, position, piece_type):
         board.insert(0, [0] * GRID_WIDTH)
     totalCompleteRows += len(lines_to_remove)
     level = totalCompleteRows // 2 + 1
-    speed = 30*(0.8 - ((level - 1) * 0.007))**(level - 1)
+    speed = 30*((0.8 - ((level - 1) * 0.007))**(level - 1))
     perfect_clear = all(all(elemento == 0 for elemento in fila) for fila in board)
     if len(lines_to_remove) > 0:
         combo_count += 1
@@ -358,14 +358,13 @@ def main():
                     speed = speed / 6
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_DOWN:
-                    speed = 30* (0.8 - ((level - 1) * 0.007))**(level - 1)
+                    speed = 30* ((0.8 - ((level - 1) * 0.007))**(level - 1))
                     
         if(fps>speed):
             fps=0
-            print(combo_count)
             if is_valid_position(current_shape, (current_position[0], current_position[1] + 1)):
                 current_position[1] += 1
-                if speed != 30*(0.8 - ((level - 1) * 0.007))**(level - 1):
+                if speed != 30*((0.8 - ((level - 1) * 0.007))**(level - 1)):
                     score += 1
             else:
                 update_board(current_shape, current_position, current_piece_type)
@@ -376,11 +375,9 @@ def main():
                 next_shapes.append(shapes_bag.pop(0))
                 current_position = [GRID_WIDTH // 2 - len(current_shape[0]) // 2, 0]
                 current_piece_type = SHAPES.index(current_shape)
-                print(False)
         
 
         if any(board[0]):
-            print("Fin del juego")
             pygame.mixer.music.stop()  # El argumento -1 indica reproducción en bucle
             if(score > high_score):
                 save_high_score(score)
@@ -401,11 +398,11 @@ def main():
                     draw_shape([[1]], [x, y], piece_type=cell - 1)
 
             shadow_position = [current_position[0], current_position[1]]
-            shadow_shape = [row[:] for row in current_shape]  # Copia la forma actual
 
-            while is_valid_position(shadow_shape, (shadow_position[0], shadow_position[1] + 1)):
+            while is_valid_position(current_shape, (shadow_position[0], shadow_position[1] + 1)):
                 shadow_position[1] += 1
-        draw_shadow(shadow_shape, shadow_position)
+
+        draw_shadow(current_shape, shadow_position)
         draw_shape(current_shape, current_position, piece_type=current_piece_type)
         draw_next_shapes(next_shapes)
         draw_held_shape(held_shape)
