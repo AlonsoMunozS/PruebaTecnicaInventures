@@ -19,10 +19,10 @@ Para la ejecución del juego se debe ingresar a la carpeta de la version que se 
 
 ```bash
 py main.py
-
+```
 o
 
 ```bash
 python3 main.py
-
+```
 Ademas, cada carpeta incluye un archivo ejecutable **Tetris.exe** para ser corrido en sistemas operativos windows
