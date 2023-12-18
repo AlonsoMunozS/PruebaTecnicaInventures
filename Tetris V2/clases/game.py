@@ -132,11 +132,11 @@ class Game:
     def start_game(self):
         # Función para iniciar el juego y gestionar la lógica del mismo
         clock = pygame.time.Clock()
-        pygame.mixer.music.load("tetris.mp3")  # Reemplaza "nombre_del_archivo_de_audio.mp3" con tu archivo de audio
-        pygame.mixer.music.set_volume(0.5)  # Ajusta el volumen según sea necesario
-        pygame.mixer.music.play(-1)  # El argumento -1 indica reproducción en bucle
+        pygame.mixer.music.load("tetris.mp3")
+        pygame.mixer.music.set_volume(0.5)  
+        pygame.mixer.music.play(-1)  
         board= Board(self.screen,self.GRID_WIDTH,self.GRID_HEIGHT,self.GRID_SIZE,self.WIDTH,self.HEIGHT)
-        shapes_bag = random.sample(range(7), 6)
+        shapes_bag = random.sample(range(7), 7)
         shape = Shape(shapes_bag.pop(0))
         next_shapes = [shapes_bag.pop(0) for _ in range(3)]
         self.score=0
@@ -179,7 +179,7 @@ class Game:
                         shape= Shape(next_shapes.pop(0))
                         next_shapes.append(shapes_bag.pop(0))
                         if len(shapes_bag) == 0:
-                            shapes_bag = random.sample(range(7), 6)
+                            shapes_bag = random.sample(range(7), 7)
                         board.shape_entry(shape)
                     elif event.key == pygame.K_z or event.key == pygame.K_LCTRL:
                         board.rotate_counterclockwise()
@@ -190,7 +190,7 @@ class Game:
                             shape= Shape(next_shapes.pop(0))
                             next_shapes.append(shapes_bag.pop(0))
                             if len(shapes_bag) == 0:
-                                shapes_bag = random.sample(range(7), 6)  
+                                shapes_bag = random.sample(range(7), 7)  
                             board.shape_entry(shape)
                         else:
                             if released_shape == False:
@@ -235,7 +235,7 @@ class Game:
                     shape= Shape(next_shapes.pop(0))
                     next_shapes.append(shapes_bag.pop(0))
                     if len(shapes_bag) == 0:
-                        shapes_bag = random.sample(range(7), 6)                  
+                        shapes_bag = random.sample(range(7), 7)                  
                     board.shape_entry(shape)
                 else:
                     if key_down_pressed:
