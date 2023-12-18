@@ -25,4 +25,4 @@ o
 ```bash
 python3 main.py
 ```
-Además, cada carpeta incluye un archivo ejecutable llamado **Tetris.exe**, diseñado para ser ejecutado en sistemas operativos Windows.
+Además, cada carpeta incluye un archivo ejecutable llamado **Tetris.exe**, diseñado para ser ejecutado en sistemas operativos Windows (Tener el archivo de audio **tetris.mp3** en la misma carpeta que el ejecutable).
