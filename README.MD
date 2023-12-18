@@ -12,7 +12,7 @@ El juego utiliza la biblioteca `pygame` para funcionar correctamente. Puedes ins
 
 ```bash
 pip install pygame
-
+```
 ## Ejecución
 
 Para la ejecución del juego se debe ingresar a la carpeta de la version que se quiera correr y ejecutar el siguiente comando:
